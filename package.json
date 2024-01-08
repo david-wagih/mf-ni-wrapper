@@ -5,7 +5,6 @@
   "cordova": {
     "id": "mf-ni-wrapper",
     "platforms": [
-      "android",
       "ios"
     ]
   },
