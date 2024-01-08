@@ -43,6 +43,6 @@
                 </pods>
         </podspec>        
         <header-file src="src/ios/MfNiWrapperPlugin.h" />
-        <source-file src="src/ios/MfNiWrapperPlugin.m" />
+        <source-file src="src/ios/MfNiWrapperPlugin.swift" />
     </platform>
 </plugin>
