@@ -1,37 +1,34 @@
-#import "MyCordovaPlugin.h"
-
+#import NICardManagementSDK
 #import <Cordova/CDVAvailability.h>
+#import "MfNiWrapperPlugin.h"
 
-@implementation MyCordovaPlugin
+@implementation MfNiWrapperPlugin
 
+// Plugin initialization
 - (void)pluginInitialize {
-    NSLog(@"MyCordovaPlugin - pluginInitialize");
+    NSLog(@"MfNiWrapperPlugin - pluginInitialize");
 }
 
+// Initialize the NICardManagementAPI with required parameters
+- (void)initializeSDK:(CDVInvokedUrlCommand*)command {
+    NSString* rootUrl = [command.arguments objectAtIndex:0];
+    NSString* cardIdentifierId = [command.arguments objectAtIndex:1];
+    NSString* cardIdentifierType = [command.arguments objectAtIndex:2];
+    NSString* bankCode = [command.arguments objectAtIndex:3];
 
-- (void)echo:(CDVInvokedUrlCommand*)command
-{
-    NSString* phrase = [command.arguments objectAtIndex:0];
-    NSLog(@"%@", phrase);
+    self.sdk = [[NICardManagementAPI alloc] initWithRootUrl:rootUrl
+                                        cardIdentifierId:cardIdentifierId
+                                      cardIdentifierType:cardIdentifierType
+                                                bankCode:bankCode
+                                         tokenFetchable:NICardManagementTokenFetchable];
 }
 
-
-- (void)getDate:(CDVInvokedUrlCommand*)command
-{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
-    [dateFormatter setLocale:enUSPOSIXLocale]
-    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
-
-    NSDate *now = [NSDate date];
-    NSString *iso8601String = [dateFormatter stringFromDate:now];
-
-
-    CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:iso8601String];
-    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
-    
+// Display the card details form
+- (void)displayCardDetailsForm:(CDVInvokedUrlCommand*)command {
+    [self.sdk displayCardDetailsFormWithViewController:self completion:^(NSString *successResponse, NSString *errorResponse) {
+        // handle error and success
+    }];
 }
+
 
 @end
-
-

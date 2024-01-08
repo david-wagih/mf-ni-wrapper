@@ -3,12 +3,23 @@ var exec = require("cordova/exec");
 var PLUGIN_NAME = "MfNiWrapperPlugin";
 
 var MfNiWrapperPlugin = {
-  echo: function (phrase, cb) {
-    exec(cb, null, PLUGIN_NAME, "echo", [phrase]);
+  initializeSDK: function (
+    rootUrl,
+    cardIdentifierId,
+    cardIdentifierType,
+    bankCode,
+    cb
+  ) {
+    exec(cb, null, PLUGIN_NAME, "initializeSDK", [
+      rootUrl,
+      cardIdentifierId,
+      cardIdentifierType,
+      bankCode,
+    ]);
   },
 
-  getDate: function (cb) {
-    exec(cb, null, PLUGIN_NAME, "getDate", []);
+  displayCardDetailsForm: function (cb) {
+    exec(cb, null, PLUGIN_NAME, "displayCardDetailsForm", []);
   },
 };
 

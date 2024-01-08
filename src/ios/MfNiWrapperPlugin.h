@@ -1,13 +1,11 @@
 #import <Cordova/CDVPlugin.h>
+#import NICardManagementSDK
 
-@interface MyCordovaPlugin : CDVPlugin
-{}
+@interface MfNiWrapperPlugin : CDVPlugin
 
+@property (nonatomic, strong) NICardManagementAPI *sdk;
 
-// the hooks for our plugin commands
-
-- (void)echo:(CDVInvokedUrlCommand*)command;
-- (void)getDate:(CDVInvokedUrlCommand*)command;
-
+- (void)initializeSDK:(CDVInvokedUrlCommand*)command;
+- (void)displayCardDetailsForm:(CDVInvokedUrlCommand*)command;
 
 @end
