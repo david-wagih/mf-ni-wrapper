@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="mf-ni-wrapper" version="1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://apache.org/cordova/ns/plugins/1.0 ">
+    <name>My Cordova Plugin</name>
+    <description>This is my first custom plugin</description>
+    <license>MIT</license>
+    <keywords>echo,plugin, cordova</keywords>
+
+
+    <js-module src="www/plugin.js" name="plugin">
+        <runs />
+        <!-- this is the window variable name you want, like window.MfNiWrapperPlugin  -->
+        <clobbers target="MfNiWrapperPlugin" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="MfNiWrapperPlugin">
+                <param name="android-package" value="com.example.MfNiWrapperPlugin" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/MfNiWrapperPlugin.java" target-dir="src/android/" />
+    </platform>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="MfNiWrapperPlugin">
+                <param name="ios-package" value="MfNiWrapperPlugin" onload="true" />
+            </feature>
+        </config-file>
+        <framework src="NICardManagementSDK" type="podspec" spec="~> 1.1.0" />
+        <header-file src="src/ios/MfNiWrapperPlugin.h" />
+        <source-file src="src/ios/MfNiWrapperPlugin.m" />
+    </platform>
+</plugin>
