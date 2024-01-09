@@ -16,16 +16,15 @@
     </js-module>
 
     <!-- android -->
-    <!-- <platform name="android">
-        <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="MfNiWrapperPlugin">
-                <param name="android-package" value="com.example.MfNiWrapperPlugin" />
-                <param name="onload" value="true" />
-            </feature>
+    <platform name="android">
+        <source-file src="src/android/org/apache/cordova/plugin/echo/Echo.kt" target-dir="java/org/apache/cordova/plugin/echo/"/>
+        <config-file target="config.xml" parent="/*">
+            <preference name="GradlePluginKotlinEnabled" value="true" />
+            <feature name="Echo">
+            <param name="android-package" value="org.apache.cordova.plugin.Echo"/>
+            </feature>  
         </config-file>
-
-        <source-file src="src/android/MfNiWrapperPlugin.java" target-dir="src/android/" />
-    </platform> -->
+    </platform>
 
     <!-- ios -->
     <platform name="ios">
