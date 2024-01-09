@@ -19,15 +19,15 @@
     <platform name="android">
         <config-file target="config.xml" parent="/*">
             <preference name="GradlePluginKotlinEnabled" value="true" />
-            <feature name="Echo">
-            <param name="android-package" value="org.apache.cordova.plugin.Echo"/>
+            <feature name="MfNiWrapperPlugin">
+            <param name="android-package" value="cordova_plugin_mfNI.MfNiWrapperPlugin"/>
             </feature>  
         </config-file>
-        <source-file src="src/android/org/apache/cordova/plugin/echo/Echo.kt" target-dir="java/org/apache/cordova/plugin/echo/"/>
+        <source-file src="src/android/MfNiWrapperPlugin.kt" target-dir="src/cordova/plugin/mfNI/MfNiWrapperPlugin"/>
     </platform>
 
     <!-- ios -->
-    <!-- <platform name="ios">
+    <platform name="ios">
         <config-file target="config.xml" parent="/*">
             <feature name="MfNiWrapperPlugin">
                 <param name="ios-package" value="MfNiWrapperPlugin" onload="true" />
@@ -43,5 +43,5 @@
         </podspec>        
         <source-file src="src/ios/MfNiWrapperPlugin.m" />
         <source-file src="src/ios/MfNiWrapperPlugin.swift" />
-    </platform> -->
+    </platform>
 </plugin>
