@@ -1,6 +1,6 @@
-// import UIKit
-// import NICardManagementSDK
-// import Combine
+import UIKit
+import NICardManagementSDK
+import Combine
 
 // let sdk = NICardManagementAPI(
 //             rootUrl: rootUrl,
@@ -11,8 +11,6 @@
 // )
 
 
-// @objc func viewCardDetails() {
-//     sdk.getCardDetails { successResponse, errorResponse in
-//     //  handle here error and success
-//    }
-// }
+@objc func echo() {
+    print("echo")
+}

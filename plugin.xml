@@ -28,6 +28,8 @@
 
     <!-- ios -->
     <platform name="ios">
+    <dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>
+    <preference name="UseSwiftLanguageVersion" value="5" />
         <config-file target="config.xml" parent="/*">
             <feature name="MfNiWrapperPlugin">
                 <param name="ios-package" value="MfNiWrapperPlugin" onload="true" />
@@ -40,8 +42,7 @@
                 <pods use-frameworks="true">
                     <pod name="NICardManagementSDK" spec="1.1.0" />
                 </pods>
-        </podspec>        
-        <source-file src="src/ios/MfNiWrapperPlugin.m" />
+        </podspec>                
         <source-file src="src/ios/MfNiWrapperPlugin.swift" />
     </platform>
 </plugin>
