@@ -7,7 +7,7 @@ class MfNiWrapperPlugin : CordovaPlugin() {
 
     override fun execute(action: String, args: JSONArray, callbackContext: CallbackContext): Boolean {
         println("MfNiWrapperPlugin: execute")
-        if ("echo" == action) {
+        if (action == "echo") {
             try {
                 val message = args.getString(0)
                 println("Echo: $message")
@@ -20,9 +20,6 @@ class MfNiWrapperPlugin : CordovaPlugin() {
                 return false
             }
         }
-
-        // Handle other actions if needed
-
         return false
     }
 }
