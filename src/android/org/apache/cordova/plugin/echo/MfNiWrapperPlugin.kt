@@ -9,7 +9,7 @@ import org.json.JSONObject
 /**
  * This class echoes a string called from JavaScript.
  */
-class Echo : CordovaPlugin() {
+class MfNiWrapper : CordovaPlugin() {
 
   override fun execute(
     action: String,

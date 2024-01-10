@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="echo" version="1.0.0"
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="mf-ni-wrapper" version="1.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://apache.org/cordova/ns/plugins/1.0 ">
     <name>My Cordova Plugin</name>
@@ -12,7 +12,7 @@
     <js-module src="www/plugin.js" name="plugin">
         <runs />
         <!-- this is the window variable name you want, like window.MfNiWrapperPlugin  -->
-        <clobbers target="EchoPlugin" />
+        <clobbers target="MfNiWrapperPlugin" />
     </js-module>
 
     <engines>
@@ -21,28 +21,18 @@
     </engines>
 
     <!-- android -->
-    <!-- <platform name="android">
-        <config-file target="config.xml" parent="/*">
-            <preference name="GradlePluginKotlinEnabled" value="true" />
-            <feature name="MfNiWrapperPlugin">
-            <param name="android-package" value="MfNiWrapperPlugin"/>
-            </feature>  
-        </config-file>
-        <source-file src="src/android/MfNiWrapperPlugin.kt" target-dir="src/cordova/plugin/mfNI/MfNiWrapperPlugin"/>
-    </platform> -->
-
     <platform name="android">
         <config-file target="config.xml" parent="/*">
             <preference name="GradlePluginKotlinEnabled" value="true" />
-            <feature name="Echo">
-            <param name="android-package" value="org.apache.cordova.plugin.Echo"/>
+            <feature name="MfNiWrapperPlugin">
+            <param name="android-package" value="org.apache.cordova.plugin.MfNiWrapperPlugin"/>
             </feature>
         </config-file>
-        <source-file src="src/android/org/apache/cordova/plugin/echo/Echo.kt" target-dir="java/org/apache/cordova/plugin/echo/"/>
+        <source-file src="src/android/org/apache/cordova/plugin/echo/MfNiWrapperPlugin.kt" target-dir="java/org/apache/cordova/plugin/echo/"/>
     </platform>
 
     <!-- ios -->
-    <!-- <platform name="ios">
+    <platform name="ios">
         <dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>
         <config-file target="config.xml" parent="/*">
             <feature name="MfNiWrapperPlugin">
@@ -58,5 +48,6 @@
                 </pods>
         </podspec>                
         <source-file src="src/ios/MfNiWrapperPlugin.swift" />
-    </platform> -->
+        <header-file src="src/ios/MfNiWrapperPlugin-Bridging-Header.h" />
+    </platform>
 </plugin>

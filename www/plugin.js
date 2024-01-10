@@ -1,11 +1,11 @@
 var exec = require("cordova/exec");
 
-var PLUGIN_NAME = "EchoPlugin";
+var PLUGIN_NAME = "MfNiWrapperPlugin";
 
-var EchoPlugin = {
+var MfNiWrapperPlugin = {
   echo: function (message, successCallback, errorCallback) {
     exec(successCallback, errorCallback, PLUGIN_NAME, "echo", [message]);
   },
 };
 
-module.exports = EchoPlugin;
+module.exports = MfNiWrapperPlugin;
