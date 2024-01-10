@@ -12,11 +12,16 @@
     <js-module src="www/plugin.js" name="plugin">
         <runs />
         <!-- this is the window variable name you want, like window.MfNiWrapperPlugin  -->
-        <clobbers target="MfNiWrapperPlugin" />
+        <clobbers target="EchoPlugin" />
     </js-module>
 
+    <engines>
+        <engine name="cordova" version=">=10.0.0"/>
+        <engine name="cordova-android" version=">=9.0.0"/>
+    </engines>
+
     <!-- android -->
-    <platform name="android">
+    <!-- <platform name="android">
         <config-file target="config.xml" parent="/*">
             <preference name="GradlePluginKotlinEnabled" value="true" />
             <feature name="MfNiWrapperPlugin">
@@ -24,10 +29,20 @@
             </feature>  
         </config-file>
         <source-file src="src/android/MfNiWrapperPlugin.kt" target-dir="src/cordova/plugin/mfNI/MfNiWrapperPlugin"/>
+    </platform> -->
+
+    <platform name="android">
+        <config-file target="config.xml" parent="/*">
+            <preference name="GradlePluginKotlinEnabled" value="true" />
+            <feature name="Echo">
+            <param name="android-package" value="org.apache.cordova.plugin.Echo"/>
+            </feature>
+        </config-file>
+        <source-file src="src/android/org/apache/cordova/plugin/echo/Echo.kt" target-dir="java/org/apache/cordova/plugin/echo/"/>
     </platform>
 
     <!-- ios -->
-    <platform name="ios">
+    <!-- <platform name="ios">
         <dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>
         <config-file target="config.xml" parent="/*">
             <feature name="MfNiWrapperPlugin">
@@ -43,5 +58,5 @@
                 </pods>
         </podspec>                
         <source-file src="src/ios/MfNiWrapperPlugin.swift" />
-    </platform>
+    </platform> -->
 </plugin>
