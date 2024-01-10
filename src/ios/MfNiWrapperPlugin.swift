@@ -1,51 +1,48 @@
-@objc(MfNiWrapperPlugin) class MfNiWrapperPlugin : CDVPlugin {
-  func echo(command: CDVInvokedUrlCommand) {
-    var pluginResult = CDVPluginResult(
-      status: CDVCommandStatus_ERROR
-    )
+import Foundation
+import Cordova
 
-    let msg = command.arguments[0] as? String ?? ""
+@objc(MfNiWrapper)
+class MfNiWrapper: CDVPlugin {
 
-    if msg.characters.count > 0 {
-      /* UIAlertController is iOS 8 or newer only. */
-      let toastController: UIAlertController =
-        UIAlertController(
-          title: "",
-          message: msg,
-          preferredStyle: .Alert
+    @objc(echo:)
+    func echo(command: CDVInvokedUrlCommand) {
+        var pluginResult = CDVPluginResult(
+            status: CDVCommandStatus_ERROR
         )
-  
-      self.viewController?.presentViewController(
-        toastController,
-        animated: true,
-        completion: nil
-      )
 
-      let duration = Double(NSEC_PER_SEC) * 3.0
-
-      dispatch_after(
-        dispatch_time(
-          DISPATCH_TIME_NOW,
-          Int64(duration)
-        ),
-        dispatch_get_main_queue(),
-        {
-          toastController.dismissViewControllerAnimated(
-            true,
-            completion: nil
-          )
+        guard let message = command.argument(at: 0) as? String,
+              !message.isEmpty else {
+            pluginResult = CDVPluginResult(
+                status: CDVCommandStatus_ERROR,
+                messageAs: "Expected one non-empty string argument."
+            )
+            self.commandDelegate.send(
+                pluginResult,
+                callbackId: command.callbackId
+            )
+            return
         }
-      )
 
-      pluginResult = CDVPluginResult(
-        status: CDVCommandStatus_OK,
-        messageAsString: msg
-      )
+        // Display toast notification (using modern approach for iOS 13+)
+        let alertController = UIAlertController(
+            title: "",
+            message: message,
+            preferredStyle: .alert
+        )
+        self.viewController?.present(alertController, animated: true) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                alertController.dismiss(animated: true)
+            }
+        }
+
+        pluginResult = CDVPluginResult(
+            status: CDVCommandStatus_OK,
+            messageAs: message
+        )
+
+        self.commandDelegate.send(
+            pluginResult,
+            callbackId: command.callbackId
+        )
     }
-
-    self.commandDelegate!.sendPluginResult(
-      pluginResult,
-      callbackId: command.callbackId
-    )
-  }
 }
