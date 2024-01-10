@@ -20,7 +20,7 @@
         <config-file target="config.xml" parent="/*">
             <preference name="GradlePluginKotlinEnabled" value="true" />
             <feature name="MfNiWrapperPlugin">
-            <param name="android-package" value="cordova_plugin_mfNI.MfNiWrapperPlugin"/>
+            <param name="android-package" value="MfNiWrapperPlugin"/>
             </feature>  
         </config-file>
         <source-file src="src/android/MfNiWrapperPlugin.kt" target-dir="src/cordova/plugin/mfNI/MfNiWrapperPlugin"/>
