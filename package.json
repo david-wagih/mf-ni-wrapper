@@ -5,13 +5,12 @@
   "cordova": {
     "id": "mf-ni-wrapper",
     "platforms": [
-      "ios"
+      "ios",
+      "android"
     ]
   },
   "keywords": [],
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "author": "David Wagih",
   "license": "MIT"
 }

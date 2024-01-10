@@ -1,8 +1,7 @@
 import Foundation
-import Cordova
 
-@objc(MfNiWrapper)
-class MfNiWrapper: CDVPlugin {
+@objc(MfNiWrapperPlugin)
+class MfNiWrapperPlugin: CDVPlugin {
 
     @objc(echo:)
     func echo(command: CDVInvokedUrlCommand) {
