@@ -6,6 +6,7 @@ import org.json.JSONException
 class MfNiWrapperPlugin : CordovaPlugin() {
 
     override fun execute(action: String, args: JSONArray, callbackContext: CallbackContext): Boolean {
+        println("MfNiWrapperPlugin: execute")
         if ("echo" == action) {
             try {
                 val message = args.getString(0)
